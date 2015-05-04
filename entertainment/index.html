@@ -1,7 +1,7 @@
 ---
 layout: default
 active-nav: firstpage
-paginate_path: "/page:num"
+paginate_path: "/blog/page:num"
 ---
 <div class="row">
   <!-- Blog Entries Column -->
@@ -60,35 +60,19 @@ paginate_path: "/page:num"
 
   <!-- Blog Sidebar Widgets Column -->
   <div class="col-md-4" role="complementary">
-    <!-- Blog Hottest Well -->
-    <div class="well">
-      <h3>重点推荐</h3>
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="list-unstyled">
-          {% for hotpost in site.categories.hot %}
-            <li><a href="{{ hotpost.url | prepend:site.baseurl }}" class="btn btn-link">{{ hotpost.title }}</a></li>
-          {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-
     <!-- Blog Categories Well -->
-    <!--
     <div class="well">
-      <h3>类别</h3>
+      <h3>标签</h3>
       <div class="row">
         <div class="col-lg-12">
           <ul class="list-unstyled">
-          {% for category in site.categories %}
-            <li><a href="{{ '/blog/' | append:category[0] | prepend:site.baseurl }}" class="btn btn-link btn-lg">{{ category[0] }}</a></li>
+          {% for tag in site.tags %}
+            <li><a href="{{ '/blog/' | append:tag[0] | prepend:site.baseurl }}" class="btn btn-link btn-lg">{{ tag[0] }}</a></li>
           {% endfor %}
           </ul>
         </div>
       </div>
     </div>
-     -->
 
     <!-- Side Widget Well -->
     <div class="well">
