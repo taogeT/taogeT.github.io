@@ -23,7 +23,7 @@ permalink: /about/
 
 这里是TG的聚宝盆，专门收集整理自己写过的技术文章，同时存储一些欢乐物。
 
-目前基于 jekyll+markdown+bootstrap3+github 建立个人博客。
+目前基于 jekyll+markdown+bootstrap3+github 建立个人博客。[博客代码]({{ site.github_project }})
 
 ### 历程
 
