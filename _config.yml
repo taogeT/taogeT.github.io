@@ -8,7 +8,7 @@ url: "http://taoget.github.io" # the base hostname & protocol for your site
 github_username: taogeT
 github_main: "https://github.com/taogeT"
 github_project: "https://github.com/taogeT/taogeT.github.io"
-copyright: Copyright &copy; Zheng Wen Tao 2015
+copyright: Copyright &copy; 2015 Zheng Wen Tao, All Rights Reserved
 
 # Build settings
 markdown: kramdown
