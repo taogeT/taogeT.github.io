@@ -1,6 +1,6 @@
 ---
 layout: default
-active-nav: firstpage
+active-nav: blog
 paginate_path: "/page:num"
 ---
 <div class="row">
@@ -13,6 +13,8 @@ paginate_path: "/page:num"
     <p>
       <span class="glyphicon glyphicon-time"></span>
        Posted on {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}
+       {% if post.categories.size > 0 %}{{ post.categories | join:" " | prepend:"分类：" }}{% endif %}
+       {% if post.tags.size > 0 %}{{ post.tags | join:" " | prepend: "标签：" }}{% endif %}
     </p>
     <hr>
     <p>{{ post.excerpt }}</p>
