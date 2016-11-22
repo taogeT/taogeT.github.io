@@ -3,9 +3,16 @@
   
     
     <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>%2F2016%2F11%2F22%2Fhello-world%2F</url>
-      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <title><![CDATA[Welcome To My Maze!!!]]></title>
+      <url>%2F2016%2F11%2F22%2Fself-welcome%2F</url>
+      <content type="text"><![CDATA[想要我的财宝吗？想要的话可以全部给你，去找吧！我把所有财宝都放在那里！ 欢迎来到迷宫，这里是存放个人技术文章的小仓库，也会收录一些其他站点文章作备份(字典)。浏览文章中偶尔会遇到奇怪的东西，不感兴趣的话请略过。想与作者联系的请参考左侧栏选择适合你的联系方式，欢迎大家来找茬！ 近期任务：scikit-learn, 多模型预测下如何确定权重。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[直播平台爬虫项目介绍]]></title>
+      <url>%2F2016%2F11%2F22%2Fabout-living-mining%2F</url>
+      <content type="text"></content>
     </entry>
 
     
