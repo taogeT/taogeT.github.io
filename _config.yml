@@ -13,7 +13,7 @@ avatar: https://avatars2.githubusercontent.com/u/6917395?v=3&s=230
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://taoget.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -70,7 +70,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:taogeT/taogeT.github.io.git
+  repo: https://github.com/taogeT/taogeT.github.io.git
   branch: master
   message: Blog update {{ now('YYYY-MM-DD HH:mm:ss') }}
 
