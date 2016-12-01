@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[直播平台爬虫项目介绍]]></title>
       <url>%2F2016%2F11%2F22%2Fabout-living-mining%2F</url>
-      <content type="text"></content>
+      <content type="text"><![CDATA[项目介绍项目实现爬虫、数据分析，主要是爬取直播(斗鱼、Bilibili)收集数据，后续开发分析功能。代码采用GPL v2协议，开源发布在 Github上。项目部署在站点：http://www.zhengwentao.com。项目是在个人兴趣下用业余时间写的，技术还欠缺火候。使用中有bug或更新建议，欢迎提issue。 功能 爬取指定直播站点的频道、房间信息，记录到数据库。 WEB显示爬取内容，以及根据人气值的排名情况。 通过OAuth2可注册用户(支持：github)。 登陆后可根据关键字搜索房间。 根据记录的房间人气值历史信息，预测未来人气值变化趋势(开发中)。 开发历史v2.0(master分支开发) 运行中采用框架： Web服务：Flask(web框架) + Vuejs(页面模板) + Bootstrap(样式)爬虫：Scrapy(爬虫工厂) + Redis(管道) + Crontab(定时任务) 爬取站点：斗鱼 bilibili v1.0(2016-08-15开发完毕)采用框架： Web服务：Flask(web框架) + Jinjia2(页面模板) + Bootstrap(样式)爬虫：Requests(生产请求) + Gevent(异步) + Celery(定时任务) 爬取站点：斗鱼 熊猫 战旗 bilibili 升级原因：采用Gevent协程处理的方式会导致进程长时间占用CPU，由于机器性能不高导致无法处理WEB请求无法访问页面。]]></content>
     </entry>
 
     
