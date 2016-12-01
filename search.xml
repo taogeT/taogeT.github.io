@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[scikit-learn-about-weight]]></title>
+      <url>%2F2016%2F12%2F01%2Fscikit-learn-about-weight%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[单元测试(Unit Test)覆盖级别]]></title>
       <url>%2F2016%2F12%2F01%2Funit-test-standard%2F</url>
       <content type="text"><![CDATA[这是我个人从外部文档和工作项目中总结，当开发单元测试时，根据项目级别不同需要达到级别标准。 级别分类 Level1：正常流程可用，函数在输入正确的参数时，会有正确的输出。 Level2：异常流程可抛出逻辑异常，输入参数有误时，不能抛出系统异常，而是用自定义的逻辑异常通知上层调用代码的错误。 Level3：极端情况和边界数据可用，对输入参数的边界情况也要单独测试，确保输出是正确有效。 Level4：所有分支、循环的逻辑走通，不能有任何流程是测试不到。 Level5：输出数据的所有字段验证，对有复杂数据结构的输出，确保每个字段都是正确的。 使用标准一般项目只要做到Level2~3即可。数据量庞大的项目需要做到Level4。高密高危项目需要做到Level5。]]></content>
