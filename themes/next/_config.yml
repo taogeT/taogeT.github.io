@@ -191,7 +191,9 @@ links_title: 个人项目
 #links_layout: block
 #links_layout: inline
 links:
+  flask-vue: https://pypi.python.org/pypi/Flask-Vue
   直播爬虫: http://www.zhengwentao.com
+  flask-celery: https://pypi.python.org/pypi/Flask-Celery-py3
 
 
 # ---------------------------------------------------------------
