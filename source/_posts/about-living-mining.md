@@ -6,8 +6,7 @@ tags:
 - Scrapy
 - Flask
 - Vue
-categories:
-- 项目
+categories: 项目
 ---
 
 ## 项目介绍

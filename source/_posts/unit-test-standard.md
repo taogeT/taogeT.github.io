@@ -3,8 +3,7 @@ title: 单元测试(Unit Test)覆盖级别
 date: 2016-12-01 16:35:26
 tags:
 - Unit Test
-categories:
-- 规范
+categories: 规范
 ---
 
 这是我个人从外部文档和工作项目中总结，当开发单元测试时，根据项目级别不同需要达到级别标准。
