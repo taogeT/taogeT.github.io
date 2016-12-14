@@ -88,7 +88,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Machine learning, sciki-learn, Python, Scrapy" />
+  <meta name="keywords" content="skill,search," />
 
 
 
@@ -104,15 +104,25 @@
 
 
 
-<meta name="description" content="Life is short, Use Python.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TG's Maze">
-<meta property="og:url" content="http://taoget.github.io/categories/机器学习/研究心得/index.html">
+<meta name="description" content="问题提出存在两个浮点数数组A、B，如何能快速查找到：
+
+浮点数x在数组A、B中都存在。(1:1)
+数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速查找两个数组中相同浮点数">
+<meta property="og:url" content="http://taoget.github.io/2016/12/09/two-array-compare/index.html">
 <meta property="og:site_name" content="TG's Maze">
-<meta property="og:description" content="Life is short, Use Python.">
+<meta property="og:description" content="问题提出存在两个浮点数数组A、B，如何能快速查找到：
+
+浮点数x在数组A、B中都存在。(1:1)
+数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)">
+<meta property="og:updated_time" content="2016-12-13T21:24:36.802Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TG's Maze">
-<meta name="twitter:description" content="Life is short, Use Python.">
+<meta name="twitter:title" content="快速查找两个数组中相同浮点数">
+<meta name="twitter:description" content="问题提出存在两个浮点数数组A、B，如何能快速查找到：
+
+浮点数x在数组A、B中都存在。(1:1)
+数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)">
 
 
 
@@ -140,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="http://taoget.github.io/categories/机器学习/研究心得/"/>
+  <link rel="canonical" href="http://taoget.github.io/2016/12/09/two-array-compare/"/>
 
 
 
 
 
-  <title> 分类: 研究心得 | TG's Maze </title>
+  <title> 快速查找两个数组中相同浮点数 | TG's Maze </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -167,7 +177,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -300,47 +310,312 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        研究心得
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/01/scikit-learn-about-weight/" itemprop="url">
-              
-                <span itemprop="name">尝试使用sklearn自动进行多模型预测并计算权重</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-01T21:20:09+08:00"
-              content="2016-12-01" >
-          12-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://taoget.github.io/2016/12/09/two-array-compare/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tao Ge">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/6917395?v=3&s=230">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="TG's Maze">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="TG's Maze" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                快速查找两个数组中相同浮点数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T23:11:02+08:00">
+                2016-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/研究心得/" itemprop="url" rel="index">
+                    <span itemprop="name">研究心得</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在两个浮点数数组A、B，如何能快速查找到：</p>
+<ol>
+<li>浮点数x在数组A、B中都存在。(1:1)</li>
+<li>数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)</li>
+</ol>
+<a id="more"></a>
+<h2 id="数据特征"><a href="#数据特征" class="headerlink" title="数据特征"></a>数据特征</h2><p>数组的情况和解决方式要求为：</p>
+<ul>
+<li>数组长度不会超过10000，但也不会低于1000。</li>
+<li>两数组长度不等。</li>
+<li>80%-90%的浮点数是符合1:1的情况。剩下的浮点数中都为1:N组合。</li>
+<li>查找时间控制在1s内。</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思考线索如下：</p>
+<ol>
+<li>是否存在通用方法解决三种查找情况？不存在，由全组合公式可知存在的组合数量：2的N次方-1(N为数组长度)。由于数组长度不可采用此方式。</li>
+<li>按照先后顺序过滤？先查1:1，再查1:N，最后全组合剩余查找M:N。</li>
+<li>1:1怎么查？循环查找不可取，浮点数先对数组正序排序，再按照数组顺序查找相同元素。</li>
+<li>1:N怎么查？过滤完1:1元素，数组仍然是正序排列。按顺序选取数组A中元素a，查找数组B中所有小于a的浮点数族为数组b，对b进行全组合后相加，得到结果与a比较。对数组B也采取相同方式。</li>
+</ol>
+<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code># !/usr/env/bin python
+# -*- coding: utf-8 -*-
+from collections import deque
+
+import math
+
+
+def create_mix_group_result(group):
+    result = {}
+    for index in range(int(math.pow(2, len(group) - 1) + 1), int(math.pow(2, len(group)))):
+        binstr = bin(index)[2:]
+        mix_group = [group[binindex] for binindex, binvalue in enumerate(binstr) if binvalue == &apos;1&apos;]
+        result[binstr] = sum(mix_group)
+    return result
+
+
+def find_one_to_one(portalA, portalB):
+    if len(portalA) &lt;= 0 or len(portalB) &lt;= 0:
+        return None, portalA, portalB
+
+    OneToOne, A_filter, B_filter = [], [], []
+
+    A = deque(sorted(portalA))
+    B = deque(sorted(portalB))
+    while len(A) &gt; 0 and len(B) &gt; 0:
+        if A[0] == B[0]:
+            OneToOne.append(A[0])
+            A.popleft()
+            B.popleft()
+        elif A[0] &lt; B[0]:
+            A_filter.append(A[0])
+            A.popleft()
+        else:
+            B_filter.append(B[0])
+            B.popleft()
+    else:
+        if len(A) &gt; 0:
+            A_filter.extend(A)
+        if len(B) &gt; 0:
+            B_filter.extend(B)
+
+    return OneToOne, A_filter, B_filter
+
+
+def find_one_to_many(portalA, portalB):
+    if len(portalA) &lt;= 0 or len(portalB) &lt;= 0:
+        return None, portalA, portalB
+
+    OneToMany, A_filter, B_filter = [], [], []
+
+    A = deque(portalA)
+    B_mix_group = create_mix_group_result(portalB)
+    while len(A) &gt; 0:
+        A_ele = A.popleft()
+        for B_mix_key, B_mix_value in B_mix_group.items():
+            if A_ele == B_mix_value:
+                newportalB = []
+                getB = []
+                for delindex, delstr in enumerate(B_mix_key):
+                    if delstr == &apos;1&apos;:
+                        getB.append(portalB[delindex])
+                    else:
+                        newportalB.append(portalB[delindex])
+                OneToMany.append((A_ele, getB))
+                portalB = newportalB
+                B_mix_group = create_mix_group_result(portalB)
+                break
+        else:
+            A_filter.append(A_ele)
+
+    B = deque(portalB)
+    A_mix_group = create_mix_group_result(A_filter)
+    while len(B) &gt; 0:
+        B_ele = B.popleft()
+        for A_mix_key, A_mix_value in A_mix_group.items():
+            if B_ele == A_mix_value:
+                newA_filter = []
+                getA = []
+                for delindex, delstr in enumerate(A_mix_key):
+                    if delstr == &apos;1&apos;:
+                        getA.append(A_filter[delindex])
+                    else:
+                        newA_filter.append(A_filter[delindex])
+                OneToMany.append((getA, B_ele))
+                A_filter = newA_filter
+                A_mix_group = create_mix_group_result(A_filter)
+                break
+        else:
+            B_filter.append(B_ele)
+
+    return OneToMany, A_filter, B_filter
+
+
+if __name__ == &apos;__main__&apos;:
+    A = [9, 1, 4, 6, 3, 10, 9, 3, 5, 2, 4, 10, 13]
+    B = [3, 10, 2, 9, 6, 6, 1, 1, 4, 8, 3, 5, 8, 12, 2, 2]
+
+    OneToOne, A_filter, B_filter = find_one_to_one(A, B)
+    print(OneToOne, A_filter, B_filter)
+    OneToMany, A_filter, B_filter = find_one_to_many(A_filter, B_filter)
+    print(OneToMany, A_filter, B_filter)
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>打赏作者，众人拾柴火焰高。</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ww4.sinaimg.cn/large/77ef2ab1gw1f2ne2zgy4zj20bt0bqq4s.jpg" alt="Tao Ge WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ww3.sinaimg.cn/mw690/77ef2ab1gw1f2ne2zc10cj209a09bdgz.jpg" alt="Tao Ge Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/skill/" rel="tag"># skill</a>
+          
+            <a href="/tags/search/" rel="tag"># search</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/scikit-learn-about-weight/" rel="next" title="尝试使用sklearn自动进行多模型预测并计算权重">
+                <i class="fa fa-chevron-left"></i> 尝试使用sklearn自动进行多模型预测并计算权重
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/14/100-hundreds-million-number/" rel="prev" title="海量数据中快速找到最大的100个">
+                海量数据中快速找到最大的100个 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -348,6 +623,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -367,8 +646,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/6917395?v=3&s=230"
@@ -482,6 +770,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题提出"><span class="nav-number">1.</span> <span class="nav-text">问题提出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据特征"><span class="nav-number">2.</span> <span class="nav-text">数据特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-Python"><span class="nav-number">4.</span> <span class="nav-text">代码(Python)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -579,6 +883,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
