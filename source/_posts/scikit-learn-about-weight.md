@@ -5,9 +5,7 @@ tags:
 - machine learning
 - python
 - scikit-learn
-categories:
-- 机器学习
-- 研究心得
+categories: 机器学习
 ---
 
 ## 待解决的问题

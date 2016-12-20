@@ -13,7 +13,7 @@ avatar: https://avatars2.githubusercontent.com/u/6917395?v=3&s=230
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://taoget.github.io/
+url: http://blog.zhengwentao.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -74,9 +74,8 @@ deploy:
   branch: master
   message: Blog update {{ now('YYYY-MM-DD HH:mm:ss') }}
 
-
 index_generator:
-  per_page: 5
+  per_page: 8
 
 archive_generator:
   per_page: 20
