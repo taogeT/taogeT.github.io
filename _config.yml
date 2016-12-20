@@ -92,3 +92,7 @@ search:
   format: html
   limit: 10000
 
+duoshuo_shortname: tgcomment
+duoshuo_share: true
+duoshuo_hotartical: true
+
