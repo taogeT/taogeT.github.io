@@ -36,6 +36,7 @@ categories: 研究心得
 
 ## 代码(Python)
 
+    ```python
     # !/usr/env/bin python
     # -*- coding: utf-8 -*-
     from collections import deque
@@ -137,26 +138,4 @@ categories: 研究心得
         print(OneToOne, A_filter, B_filter)
         OneToMany, A_filter, B_filter = find_one_to_many(A_filter, B_filter)
         print(OneToMany, A_filter, B_filter)
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ```

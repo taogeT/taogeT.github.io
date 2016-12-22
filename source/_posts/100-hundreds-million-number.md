@@ -1,8 +1,8 @@
 ---
 title: 海量数据中快速找到最大的100个
 tags:
-  - skill
-  - search
+- skill
+- search
 categories: 研究心得
 date: 2016-12-14 05:38:09
 ---
@@ -24,6 +24,7 @@ date: 2016-12-14 05:38:09
 
 ## 代码(Python)
 
+    ```python
     # !/usr/env/bin python
     # -*- coding: utf-8 -*-
     import heapq
@@ -37,4 +38,4 @@ date: 2016-12-14 05:38:09
             sample += [random.randint(1, 100000) for _ in range(500)]
             sample = heapq.nlargest(100, sample)
         print(sample)
-    
+    ```

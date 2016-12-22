@@ -96,3 +96,8 @@ duoshuo_shortname: tgcomment
 duoshuo_share: true
 duoshuo_hotartical: true
 
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
