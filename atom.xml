@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>TG&#39;s Maze</title>
+  <subtitle>个人技术&amp;爱好博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.zhengwentao.com/"/>
+  <updated>2016-12-22T10:11:51.684Z</updated>
+  <id>http://blog.zhengwentao.com/</id>
+  
+  <author>
+    <name>Tao Ge</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>海量数据中快速找到最大的100个</title>
+    <link href="http://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/"/>
+    <id>http://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</id>
+    <published>2016-12-13T21:38:09.000Z</published>
+    <updated>2016-12-22T10:11:51.684Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在五十万个数字，如何快速找到最大(小)的100个。</p>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思考线索如下：</p>
+<ol>
+<li>普通排序方式，需要同时把数据全部加载到内存排序，由于python性能问题不采用。</li>
+<li>采用堆排序(heapq)的方式提升排序速度。</li>
+<li>不全部加载，每次取500个数据，取其中最大100个。然后再以每次500个加载比较。</li>
+</ol>
+<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># !/usr/env/bin python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    sample = []</div><div class="line">    random.randrange</div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</div><div class="line">        sample += [random.randint(<span class="number">1</span>, <span class="number">100000</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">500</span>)]</div><div class="line">        sample = heapq.nlargest(<span class="number">100</span>, sample)</div><div class="line">    print(sample)</div></pre></td></tr></table></figure>
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题提出&quot;&gt;&lt;a href=&quot;#问题提出&quot; class=&quot;headerlink&quot; title=&quot;问题提出&quot;&gt;&lt;/a&gt;问题提出&lt;/h2&gt;&lt;p&gt;存在五十万个数字，如何快速找到最大(小)的100个。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="研究心得" scheme="http://blog.zhengwentao.com/categories/%E7%A0%94%E7%A9%B6%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="skill" scheme="http://blog.zhengwentao.com/tags/skill/"/>
+    
+      <category term="search" scheme="http://blog.zhengwentao.com/tags/search/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速查找两个数组中相同浮点数</title>
+    <link href="http://blog.zhengwentao.com/2016/12/09/two-array-compare/"/>
+    <id>http://blog.zhengwentao.com/2016/12/09/two-array-compare/</id>
+    <published>2016-12-09T15:11:02.000Z</published>
+    <updated>2016-12-22T10:14:22.459Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在两个浮点数数组A、B，如何能快速查找到：</p>
+<ol>
+<li>浮点数x在数组A、B中都存在。(1:1)</li>
+<li>数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)</li>
+</ol>
+<a id="more"></a>
+<h2 id="数据特征"><a href="#数据特征" class="headerlink" title="数据特征"></a>数据特征</h2><p>数组的情况和解决方式要求为：</p>
+<ul>
+<li>数组长度不会超过10000，但也不会低于1000。</li>
+<li>两数组长度不等。</li>
+<li>80%-90%的浮点数是符合1:1的情况。剩下的浮点数中都为1:N组合。</li>
+<li>查找时间控制在1s内。</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思考线索如下：</p>
+<ol>
+<li>是否存在通用方法解决三种查找情况？不存在，由全组合公式可知存在的组合数量：2的N次方-1(N为数组长度)。由于数组长度不可采用此方式。</li>
+<li>按照先后顺序过滤？先查1:1，再查1:N，最后全组合剩余查找M:N。</li>
+<li>1:1怎么查？循环查找不可取，浮点数先对数组正序排序，再按照数组顺序查找相同元素。</li>
+<li>1:N怎么查？过滤完1:1元素，数组仍然是正序排列。按顺序选取数组A中元素a，查找数组B中所有小于a的浮点数族为数组b，对b进行全组合后相加，得到结果与a比较。对数组B也采取相同方式。</li>
+</ol>
+<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># !/usr/env/bin python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</div><div class="line"></div><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_mix_group_result</span><span class="params">(group)</span>:</span></div><div class="line">    result = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(int(math.pow(<span class="number">2</span>, len(group) - <span class="number">1</span>) + <span class="number">1</span>), int(math.pow(<span class="number">2</span>, len(group)))):</div><div class="line">        binstr = bin(index)[<span class="number">2</span>:]</div><div class="line">        mix_group = [group[binindex] <span class="keyword">for</span> binindex, binvalue <span class="keyword">in</span> enumerate(binstr) <span class="keyword">if</span> binvalue == <span class="string">'1'</span>]</div><div class="line">        result[binstr] = sum(mix_group)</div><div class="line">    <span class="keyword">return</span> result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_one_to_one</span><span class="params">(portalA, portalB)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(portalA) &lt;= <span class="number">0</span> <span class="keyword">or</span> len(portalB) &lt;= <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span>, portalA, portalB</div><div class="line"></div><div class="line">    OneToOne, A_filter, B_filter = [], [], []</div><div class="line"></div><div class="line">    A = deque(sorted(portalA))</div><div class="line">    B = deque(sorted(portalB))</div><div class="line">    <span class="keyword">while</span> len(A) &gt; <span class="number">0</span> <span class="keyword">and</span> len(B) &gt; <span class="number">0</span>:</div><div class="line">        <span class="keyword">if</span> A[<span class="number">0</span>] == B[<span class="number">0</span>]:</div><div class="line">            OneToOne.append(A[<span class="number">0</span>])</div><div class="line">            A.popleft()</div><div class="line">            B.popleft()</div><div class="line">        <span class="keyword">elif</span> A[<span class="number">0</span>] &lt; B[<span class="number">0</span>]:</div><div class="line">            A_filter.append(A[<span class="number">0</span>])</div><div class="line">            A.popleft()</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            B_filter.append(B[<span class="number">0</span>])</div><div class="line">            B.popleft()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">if</span> len(A) &gt; <span class="number">0</span>:</div><div class="line">            A_filter.extend(A)</div><div class="line">        <span class="keyword">if</span> len(B) &gt; <span class="number">0</span>:</div><div class="line">            B_filter.extend(B)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> OneToOne, A_filter, B_filter</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_one_to_many</span><span class="params">(portalA, portalB)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(portalA) &lt;= <span class="number">0</span> <span class="keyword">or</span> len(portalB) &lt;= <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span>, portalA, portalB</div><div class="line"></div><div class="line">    OneToMany, A_filter, B_filter = [], [], []</div><div class="line"></div><div class="line">    A = deque(portalA)</div><div class="line">    B_mix_group = create_mix_group_result(portalB)</div><div class="line">    <span class="keyword">while</span> len(A) &gt; <span class="number">0</span>:</div><div class="line">        A_ele = A.popleft()</div><div class="line">        <span class="keyword">for</span> B_mix_key, B_mix_value <span class="keyword">in</span> B_mix_group.items():</div><div class="line">            <span class="keyword">if</span> A_ele == B_mix_value:</div><div class="line">                newportalB = []</div><div class="line">                getB = []</div><div class="line">                <span class="keyword">for</span> delindex, delstr <span class="keyword">in</span> enumerate(B_mix_key):</div><div class="line">                    <span class="keyword">if</span> delstr == <span class="string">'1'</span>:</div><div class="line">                        getB.append(portalB[delindex])</div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        newportalB.append(portalB[delindex])</div><div class="line">                OneToMany.append((A_ele, getB))</div><div class="line">                portalB = newportalB</div><div class="line">                B_mix_group = create_mix_group_result(portalB)</div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            A_filter.append(A_ele)</div><div class="line"></div><div class="line">    B = deque(portalB)</div><div class="line">    A_mix_group = create_mix_group_result(A_filter)</div><div class="line">    <span class="keyword">while</span> len(B) &gt; <span class="number">0</span>:</div><div class="line">        B_ele = B.popleft()</div><div class="line">        <span class="keyword">for</span> A_mix_key, A_mix_value <span class="keyword">in</span> A_mix_group.items():</div><div class="line">            <span class="keyword">if</span> B_ele == A_mix_value:</div><div class="line">                newA_filter = []</div><div class="line">                getA = []</div><div class="line">                <span class="keyword">for</span> delindex, delstr <span class="keyword">in</span> enumerate(A_mix_key):</div><div class="line">                    <span class="keyword">if</span> delstr == <span class="string">'1'</span>:</div><div class="line">                        getA.append(A_filter[delindex])</div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        newA_filter.append(A_filter[delindex])</div><div class="line">                OneToMany.append((getA, B_ele))</div><div class="line">                A_filter = newA_filter</div><div class="line">                A_mix_group = create_mix_group_result(A_filter)</div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            B_filter.append(B_ele)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> OneToMany, A_filter, B_filter</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    A = [<span class="number">9</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">13</span>]</div><div class="line">    B = [<span class="number">3</span>, <span class="number">10</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">2</span>, <span class="number">2</span>]</div><div class="line"></div><div class="line">    OneToOne, A_filter, B_filter = find_one_to_one(A, B)</div><div class="line">    print(OneToOne, A_filter, B_filter)</div><div class="line">    OneToMany, A_filter, B_filter = find_one_to_many(A_filter, B_filter)</div><div class="line">    print(OneToMany, A_filter, B_filter)</div></pre></td></tr></table></figure>
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题提出&quot;&gt;&lt;a href=&quot;#问题提出&quot; class=&quot;headerlink&quot; title=&quot;问题提出&quot;&gt;&lt;/a&gt;问题提出&lt;/h2&gt;&lt;p&gt;存在两个浮点数数组A、B，如何能快速查找到：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;浮点数x在数组A、B中都存在。(1:1)&lt;/li&gt;
+&lt;li&gt;数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="研究心得" scheme="http://blog.zhengwentao.com/categories/%E7%A0%94%E7%A9%B6%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="skill" scheme="http://blog.zhengwentao.com/tags/skill/"/>
+    
+      <category term="search" scheme="http://blog.zhengwentao.com/tags/search/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>尝试使用sklearn自动进行多模型预测并计算权重</title>
+    <link href="http://blog.zhengwentao.com/2016/12/01/scikit-learn-about-weight/"/>
+    <id>http://blog.zhengwentao.com/2016/12/01/scikit-learn-about-weight/</id>
+    <published>2016-12-01T13:20:09.000Z</published>
+    <updated>2016-12-20T02:15:36.226Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="待解决的问题"><a href="#待解决的问题" class="headerlink" title="待解决的问题"></a>待解决的问题</h2><p>在拥有多个模型的情况下，是否可以通过给多个模型分配权重(weight)，使得加权后的多模型预测结果要好于单模型？</p>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>是否存在通用的多模型weight计算方式？</li>
+<li>如果没有，是否存在其他选取模型的方式？</li>
+<li>如果权重只能人为设置，增加权重提高拟合度的方法是否可行？</li>
+<li>如果权重能自动计算，能否在实际数据训练中增加拟合度？</li>
+</ul>
+<h2 id="解决方向"><a href="#解决方向" class="headerlink" title="解决方向"></a>解决方向</h2><ol>
+<li>查找相关论文资料，确认了使用多模型同时计算加权的方式不常见。更多的是对单模型做优化以提高拟合度。简单做法是取所有模型拟合度相加等比放大/缩小到1，放大/缩小系数k作为权重。</li>
+<li>sklearn中存在一个分类器VotingClassifier，往这个分类器中添加多个模型，可以根据训练集计算得分(score,拟合度)最高的模型，并以此模型做预测。</li>
+<li>人为设置方式不可取，调整者需要很丰富的经验和大量测试时间。故采用决策树的方式，自动调整权重，得到与训练集拟合度最高的结果为合适方案。同时，此方案需要大量的样本数据才能拟合准确，否则会出现过拟合or仅在特定训练集表现优秀的情况。</li>
+</ol>
+<h2 id="试验"><a href="#试验" class="headerlink" title="试验"></a>试验</h2><p>假设存在三个模型A B C，训练集train_set。</p>
+<h3 id="简单权重计算"><a href="#简单权重计算" class="headerlink" title="简单权重计算"></a>简单权重计算</h3><p>训练集拟合得分Sa, Sb, Sc。权重计算为  </p>
+<ol>
+<li>当存在 Si&lt;=0 时，该模型的权重Wi = 0，不计算结果。</li>
+<li>Ssum = Sa，Sb，Sc相加。</li>
+<li>权重 Wi = Si / Ssum。</li>
+</ol>
+<p>此方式得到的权重，在实际计算中未能有效的提升预测结果的拟合度，表现与使用单模型相差不大，整体上表现略逊于拟合度&gt;0.5的模型。</p>
+<h3 id="sklearn分类器"><a href="#sklearn分类器" class="headerlink" title="sklearn分类器"></a>sklearn分类器</h3><p>将模型放入sklearn分类器进行模拟时发现，分类器选取要求每个模型拟合的训练集在数据清洗组合后都是同维的，才能进行比较。而目前使用的模型：支持向量机(SVR)，隐性时间序列(HiddenPeriod)，需要的训练集是完全不同维度的(SVR：28, HP: 1)。且将来添加其他模型需要训练的维度也大概率是不同于两者。故此方案不可行。</p>
+<h3 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h3><p>目前由于数据数量和边界条件不明，暂时无法做拟合度测试。<strong>待重启</strong></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>以目前的研究和试验看来，权重的方式对拟合度的提升不明显，效率提升不如对单模型进行优化。故权重计算的开发可暂时延后。</p>
+<h3 id="另一种思路？"><a href="#另一种思路？" class="headerlink" title="另一种思路？"></a>另一种思路？</h3><p>不采用权重同时训练所有的模型，而是先取某个模型进行训练，再针对残差使用另一个模型进行训练。这种思路会使得单模型有针对性的处理特定数据训练集，是否能提高拟合度有待检验。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;待解决的问题&quot;&gt;&lt;a href=&quot;#待解决的问题&quot; class=&quot;headerlink&quot; title=&quot;待解决的问题&quot;&gt;&lt;/a&gt;待解决的问题&lt;/h2&gt;&lt;p&gt;在拥有多个模型的情况下，是否可以通过给多个模型分配权重(weight)，使得加权后的多模型预测结果要好于单模型？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://blog.zhengwentao.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="machine learning" scheme="http://blog.zhengwentao.com/tags/machine-learning/"/>
+    
+      <category term="python" scheme="http://blog.zhengwentao.com/tags/python/"/>
+    
+      <category term="scikit-learn" scheme="http://blog.zhengwentao.com/tags/scikit-learn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单元测试(Unit Test)覆盖级别</title>
+    <link href="http://blog.zhengwentao.com/2016/12/01/unit-test-standard/"/>
+    <id>http://blog.zhengwentao.com/2016/12/01/unit-test-standard/</id>
+    <published>2016-12-01T08:35:26.000Z</published>
+    <updated>2016-12-01T14:48:25.159Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是我个人从外部文档和工作项目中总结，当开发单元测试时，根据项目级别不同需要达到级别标准。</p>
+<h3 id="级别分类"><a href="#级别分类" class="headerlink" title="级别分类"></a>级别分类</h3><ul>
+<li>Level1：正常流程可用，函数在输入正确的参数时，会有正确的输出。</li>
+<li>Level2：异常流程可抛出逻辑异常，输入参数有误时，不能抛出系统异常，而是用自定义的逻辑异常通知上层调用代码的错误。</li>
+<li>Level3：极端情况和边界数据可用，对输入参数的边界情况也要单独测试，确保输出是正确有效。</li>
+<li>Level4：所有分支、循环的逻辑走通，不能有任何流程是测试不到。</li>
+<li>Level5：输出数据的所有字段验证，对有复杂数据结构的输出，确保每个字段都是正确的。</li>
+</ul>
+<a id="more"></a>
+<h3 id="使用标准"><a href="#使用标准" class="headerlink" title="使用标准"></a>使用标准</h3><p>一般项目只要做到Level2~3即可。数据量庞大的项目需要做到Level4。高密高危项目需要做到Level5。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是我个人从外部文档和工作项目中总结，当开发单元测试时，根据项目级别不同需要达到级别标准。&lt;/p&gt;
+&lt;h3 id=&quot;级别分类&quot;&gt;&lt;a href=&quot;#级别分类&quot; class=&quot;headerlink&quot; title=&quot;级别分类&quot;&gt;&lt;/a&gt;级别分类&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Level1：正常流程可用，函数在输入正确的参数时，会有正确的输出。&lt;/li&gt;
+&lt;li&gt;Level2：异常流程可抛出逻辑异常，输入参数有误时，不能抛出系统异常，而是用自定义的逻辑异常通知上层调用代码的错误。&lt;/li&gt;
+&lt;li&gt;Level3：极端情况和边界数据可用，对输入参数的边界情况也要单独测试，确保输出是正确有效。&lt;/li&gt;
+&lt;li&gt;Level4：所有分支、循环的逻辑走通，不能有任何流程是测试不到。&lt;/li&gt;
+&lt;li&gt;Level5：输出数据的所有字段验证，对有复杂数据结构的输出，确保每个字段都是正确的。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="规范" scheme="http://blog.zhengwentao.com/categories/%E8%A7%84%E8%8C%83/"/>
+    
+    
+      <category term="Unit Test" scheme="http://blog.zhengwentao.com/tags/Unit-Test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Welcome To My Maze!!!</title>
+    <link href="http://blog.zhengwentao.com/2016/11/22/self-welcome/"/>
+    <id>http://blog.zhengwentao.com/2016/11/22/self-welcome/</id>
+    <published>2016-11-22T10:22:42.000Z</published>
+    <updated>2016-12-20T02:17:14.466Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="欢迎来到迷宫"><a href="#欢迎来到迷宫" class="headerlink" title="欢迎来到迷宫"></a>欢迎来到迷宫</h3><blockquote>
+<p>想要我的财宝吗？想要的话可以全部给你，去找吧！我把所有财宝都放在那里！</p>
+</blockquote>
+<p>这里是存放个人技术文章的小仓库，也会收录一些其他站点文章作备份(字典)。浏览文章中偶尔会遇到奇怪的东西，不感兴趣的话请略过。<br>想与作者联系的请参考左侧栏选择适合你的联系方式，欢迎大家来找茬！</p>
+<p>近期任务：使用Vue.js完成爬虫站点前后端分离</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;欢迎来到迷宫&quot;&gt;&lt;a href=&quot;#欢迎来到迷宫&quot; class=&quot;headerlink&quot; title=&quot;欢迎来到迷宫&quot;&gt;&lt;/a&gt;欢迎来到迷宫&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;想要我的财宝吗？想要的话可以全部给你，去找吧！我把所有财宝都放在那里！&lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="项目" scheme="http://blog.zhengwentao.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>直播平台爬虫项目介绍</title>
+    <link href="http://blog.zhengwentao.com/2016/11/22/about-living-mining/"/>
+    <id>http://blog.zhengwentao.com/2016/11/22/about-living-mining/</id>
+    <published>2016-11-22T09:55:12.000Z</published>
+    <updated>2016-12-01T14:48:15.934Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>项目实现爬虫、数据分析，主要是爬取直播(斗鱼、Bilibili)收集数据，后续开发分析功能。代码采用<strong>GPL v2</strong>协议，开源发布在 <a href="https://github.com/taogeT/livetv_mining" target="_blank" rel="external">Github</a>上。项目部署在站点：<a href="http://www.zhengwentao.com/" target="_blank" rel="external">http://www.zhengwentao.com</a>。<br>项目是在个人兴趣下用业余时间写的，技术还欠缺火候。使用中有bug或更新建议，欢迎提issue。</p>
+<a id="more"></a>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>爬取指定直播站点的频道、房间信息，记录到数据库。</li>
+<li>WEB显示爬取内容，以及根据人气值的排名情况。</li>
+<li>通过OAuth2可注册用户(支持：github)。</li>
+<li>登陆后可根据关键字搜索房间。</li>
+<li>根据记录的房间人气值历史信息，预测未来人气值变化趋势(开发中)。</li>
+</ul>
+<h2 id="开发历史"><a href="#开发历史" class="headerlink" title="开发历史"></a>开发历史</h2><h3 id="v2-0-master分支开发-运行中"><a href="#v2-0-master分支开发-运行中" class="headerlink" title="v2.0(master分支开发) 运行中"></a>v2.0(master分支开发) 运行中</h3><p>采用框架：  </p>
+<blockquote>
+<p>Web服务：Flask(web框架) + Vuejs(页面模板) + Bootstrap(样式)<br>爬虫：Scrapy(爬虫工厂) + Redis(管道) + Crontab(定时任务)</p>
+</blockquote>
+<p>爬取站点：<br><a href="https://www.douyu.com/" target="_blank" rel="external">斗鱼</a>  <a href="http://live.bilibili.com/" target="_blank" rel="external">bilibili</a></p>
+<h3 id="v1-0-2016-08-15开发完毕"><a href="#v1-0-2016-08-15开发完毕" class="headerlink" title="v1.0(2016-08-15开发完毕)"></a>v1.0(2016-08-15开发完毕)</h3><p>采用框架：  </p>
+<blockquote>
+<p>Web服务：Flask(web框架) + Jinjia2(页面模板) + Bootstrap(样式)<br>爬虫：Requests(生产请求) + Gevent(异步) + Celery(定时任务)</p>
+</blockquote>
+<p>爬取站点：<br><a href="https://www.douyu.com/" target="_blank" rel="external">斗鱼</a>  <a href="http://www.panda.tv/" target="_blank" rel="external">熊猫</a>  <a href="http://www.zhanqi.tv/" target="_blank" rel="external">战旗</a>  <a href="http://live.bilibili.com/" target="_blank" rel="external">bilibili</a></p>
+<p>升级原因：<br>采用Gevent协程处理的方式会导致进程长时间占用CPU，由于机器性能不高导致无法处理WEB请求无法访问页面。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;项目介绍&quot;&gt;&lt;a href=&quot;#项目介绍&quot; class=&quot;headerlink&quot; title=&quot;项目介绍&quot;&gt;&lt;/a&gt;项目介绍&lt;/h2&gt;&lt;p&gt;项目实现爬虫、数据分析，主要是爬取直播(斗鱼、Bilibili)收集数据，后续开发分析功能。代码采用&lt;strong&gt;GPL v2&lt;/strong&gt;协议，开源发布在 &lt;a href=&quot;https://github.com/taogeT/livetv_mining&quot;&gt;Github&lt;/a&gt;上。项目部署在站点：&lt;a href=&quot;http://www.zhengwentao.com/&quot;&gt;http://www.zhengwentao.com&lt;/a&gt;。&lt;br&gt;项目是在个人兴趣下用业余时间写的，技术还欠缺火候。使用中有bug或更新建议，欢迎提issue。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="项目" scheme="http://blog.zhengwentao.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+      <category term="Python" scheme="http://blog.zhengwentao.com/tags/Python/"/>
+    
+      <category term="Scrapy" scheme="http://blog.zhengwentao.com/tags/Scrapy/"/>
+    
+      <category term="Flask" scheme="http://blog.zhengwentao.com/tags/Flask/"/>
+    
+      <category term="Vue" scheme="http://blog.zhengwentao.com/tags/Vue/"/>
+    
+  </entry>
+  
+</feed>

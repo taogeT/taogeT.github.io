@@ -94,6 +94,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="TG's Maze" type="application/atom+xml" />
+
 
 
 
@@ -110,7 +112,7 @@
 <meta property="og:url" content="http://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/index.html">
 <meta property="og:site_name" content="TG's Maze">
 <meta property="og:description" content="问题提出存在五十万个数字，如何快速找到最大(小)的100个。">
-<meta property="og:updated_time" content="2016-12-13T21:38:09.434Z">
+<meta property="og:updated_time" content="2016-12-22T10:11:51.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="海量数据中快速找到最大的100个">
 <meta name="twitter:description" content="问题提出存在五十万个数字，如何快速找到最大(小)的100个。">
@@ -417,19 +419,7 @@
 <li>采用堆排序(heapq)的方式提升排序速度。</li>
 <li>不全部加载，每次取500个数据，取其中最大100个。然后再以每次500个加载比较。</li>
 </ol>
-<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code># !/usr/env/bin python
-# -*- coding: utf-8 -*-
-import heapq
-import random
-
-
-if __name__ == &apos;__main__&apos;:
-    sample = []
-    random.randrange
-    for _ in range(1000):
-        sample += [random.randint(1, 100000) for _ in range(500)]
-        sample = heapq.nlargest(100, sample)
-    print(sample)
+<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># !/usr/env/bin python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    sample = []</div><div class="line">    random.randrange</div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</div><div class="line">        sample += [random.randint(<span class="number">1</span>, <span class="number">100000</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">500</span>)]</div><div class="line">        sample = heapq.nlargest(<span class="number">100</span>, sample)</div><div class="line">    print(sample)</div></pre></td></tr></table></figure>
 </code></pre>
       
     </div>
@@ -612,6 +602,13 @@ if __name__ == &apos;__main__&apos;:
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
