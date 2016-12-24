@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhengwentao.com/"/>
-  <updated>2016-12-22T10:11:51.684Z</updated>
+  <updated>2016-12-24T08:40:43.915Z</updated>
   <id>http://blog.zhengwentao.com/</id>
   
   <author>
@@ -16,11 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>随机拆分一个正数为任意份</title>
+    <link href="http://blog.zhengwentao.com/2016/12/24/split-one-integer-to-serveral/"/>
+    <id>http://blog.zhengwentao.com/2016/12/24/split-one-integer-to-serveral/</id>
+    <published>2016-12-24T08:40:43.000Z</published>
+    <updated>2016-12-24T08:40:43.915Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>设一个正数sum，需将其随机分为n份，其和仍保持为sum。</p>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思考线索如下：</p>
+<ol>
+<li>先转为正整数问题，浮点数可以转为整数*10^m(m&lt;0) 替换处理。</li>
+<li>问题转变：假设存在sum个点排为一列，则存在sum-1个间隔。往间隔中插入n-1个分割板，将点分为n份。</li>
+<li>解决步骤：随机抽取n-1个小于sum的数组成数组，进行顺序排序，并在头部加0，尾部加sum。每个数之间的差(分割板位置)即可得到相加为sum的n份数据。</li>
+<li>如果为浮点数需要复原。</li>
+</ol>
+<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># !/usr/env/bin python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</div><div class="line"></div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_integer</span><span class="params">(prototype, part)</span>:</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> (isinstance(prototype, int) <span class="keyword">and</span> isinstance(part, int)):</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'Input params should be integer.'</span>)</div><div class="line">    <span class="keyword">if</span> part &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'Split part should be more than 1.'</span>)</div><div class="line">    <span class="keyword">if</span> prototype &lt;= part:</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'Split part should be more than split prototype.'</span>)</div><div class="line">    board_set = set()</div><div class="line">    <span class="keyword">while</span> len(board_set) &lt; part - <span class="number">1</span>:</div><div class="line">        board_set.add(random.randrange(<span class="number">1</span>, prototype))</div><div class="line">    board_list = list(board_set)</div><div class="line">    board_list.append(<span class="number">0</span>)</div><div class="line">    board_list.append(prototype)</div><div class="line">    board_list.sort()</div><div class="line">    <span class="keyword">return</span> [board_list[i + <span class="number">1</span>] - board_list[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(part)]</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_float</span><span class="params">(prototype, part)</span>:</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(prototype, float):</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'Input prototype should be float.'</span>)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(part, int):</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'Input part should be integer.'</span>)</div><div class="line">    prototype = Decimal(str(prototype))</div><div class="line">    _, decimal_digits, decimal_exponent = prototype.as_tuple()</div><div class="line">    union_int = Decimal(<span class="string">'0'</span>)</div><div class="line">    pow_base = Decimal(<span class="string">'10'</span>)</div><div class="line">    <span class="keyword">for</span> i, d <span class="keyword">in</span> enumerate(decimal_digits):</div><div class="line">        union_int += Decimal(str(d)) * pow_base ** (len(decimal_digits) - <span class="number">1</span> - i)</div><div class="line">    <span class="keyword">return</span> [float(v * pow_base ** decimal_exponent) <span class="keyword">for</span> v <span class="keyword">in</span> split_integer(int(union_int), part)]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="string">''' integer sample '''</span></div><div class="line">    part = random.randrange(<span class="number">2</span>, <span class="number">10</span>)</div><div class="line">    sample_int = random.randrange(<span class="number">20</span>, <span class="number">100</span>)</div><div class="line">    print(part, sample_int)</div><div class="line">    res_int = split_integer(sample_int, part)</div><div class="line">    print(res_int)</div><div class="line"></div><div class="line">    <span class="string">''' float sample '''</span></div><div class="line">    part = random.randrange(<span class="number">2</span>, <span class="number">10</span>)</div><div class="line">    sample_float = round(random.uniform(<span class="number">20</span>, <span class="number">100</span>), <span class="number">8</span>)</div><div class="line">    print(part, sample_float)</div><div class="line">    res_float = split_float(sample_float, part)</div><div class="line">    print(res_float)</div></pre></td></tr></table></figure>
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题提出&quot;&gt;&lt;a href=&quot;#问题提出&quot; class=&quot;headerlink&quot; title=&quot;问题提出&quot;&gt;&lt;/a&gt;问题提出&lt;/h2&gt;&lt;p&gt;设一个正数sum，需将其随机分为n份，其和仍保持为sum。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="研究心得" scheme="http://blog.zhengwentao.com/categories/%E7%A0%94%E7%A9%B6%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="skill" scheme="http://blog.zhengwentao.com/tags/skill/"/>
+    
+      <category term="search" scheme="http://blog.zhengwentao.com/tags/search/"/>
+    
+  </entry>
+  
+  <entry>
     <title>海量数据中快速找到最大的100个</title>
     <link href="http://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/"/>
     <id>http://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</id>
     <published>2016-12-13T21:38:09.000Z</published>
-    <updated>2016-12-22T10:11:51.684Z</updated>
+    <updated>2016-12-23T12:35:33.241Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在五十万个数字，如何快速找到最大(小)的100个。</p>
 <a id="more"></a>
@@ -30,7 +64,7 @@
 <li>采用堆排序(heapq)的方式提升排序速度。</li>
 <li>不全部加载，每次取500个数据，取其中最大100个。然后再以每次500个加载比较。</li>
 </ol>
-<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># !/usr/env/bin python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    sample = []</div><div class="line">    random.randrange</div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</div><div class="line">        sample += [random.randint(<span class="number">1</span>, <span class="number">100000</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">500</span>)]</div><div class="line">        sample = heapq.nlargest(<span class="number">100</span>, sample)</div><div class="line">    print(sample)</div></pre></td></tr></table></figure>
+<h2 id="代码-Python"><a href="#代码-Python" class="headerlink" title="代码(Python)"></a>代码(Python)</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># !/usr/env/bin python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    sample = []</div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</div><div class="line">        sample += [random.randint(<span class="number">1</span>, <span class="number">100000</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">500</span>)]</div><div class="line">        sample = heapq.nlargest(<span class="number">100</span>, sample)</div><div class="line">    print(sample)</div></pre></td></tr></table></figure>
 </code></pre>]]></content>
     
     <summary type="html">
