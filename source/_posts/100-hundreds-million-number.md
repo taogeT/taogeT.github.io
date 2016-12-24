@@ -33,7 +33,6 @@ date: 2016-12-14 05:38:09
     
     if __name__ == '__main__':
         sample = []
-        random.randrange
         for _ in range(1000):
             sample += [random.randint(1, 100000) for _ in range(500)]
             sample = heapq.nlargest(100, sample)
