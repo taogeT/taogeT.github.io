@@ -132,7 +132,7 @@ social:
   GitHub: https://github.com/taogeT
   QQ: http://wpa.qq.com/msgrd?v=3&uin=3084582097&site=qq&menu=yes
   Gmail: mailto:zwtzjd@gmail.com
-  知乎: https://www.zhihu.com/people/xiedaimade
+  #知乎: https://www.zhihu.com/people/xiedaimade
 
 # Social Links Icons
 # Icon Mapping:
@@ -146,7 +146,7 @@ social_icons:
   GitHub: github
   QQ: qq
   Gmail: envelope
-  知乎: quora
+  #知乎: quora
 
 
 # Sidebar Avatar
