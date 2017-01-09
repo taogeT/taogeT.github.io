@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhengwentao.com/2016/11/22/self-welcome/</loc>
+    
+    <lastmod>2017-01-09T07:41:03.818Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhengwentao.com/2016/12/24/split-one-integer-to-serveral/</loc>
     
     <lastmod>2016-12-24T08:40:43.915Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://blog.zhengwentao.com/baidu_verify_AzoxdezmyA.html</loc>
     
     <lastmod>2016-12-20T02:32:28.025Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhengwentao.com/2016/11/22/self-welcome/</loc>
-    
-    <lastmod>2016-12-20T02:17:14.466Z</lastmod>
     
   </url>
   

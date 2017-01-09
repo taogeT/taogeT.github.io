@@ -226,13 +226,13 @@
     <link href="http://blog.zhengwentao.com/2016/11/22/self-welcome/"/>
     <id>http://blog.zhengwentao.com/2016/11/22/self-welcome/</id>
     <published>2016-11-22T10:22:42.000Z</published>
-    <updated>2016-12-20T02:17:14.466Z</updated>
+    <updated>2017-01-09T07:41:03.818Z</updated>
     
     <content type="html"><![CDATA[<h3 id="欢迎来到迷宫"><a href="#欢迎来到迷宫" class="headerlink" title="欢迎来到迷宫"></a>欢迎来到迷宫</h3><blockquote>
 <p>想要我的财宝吗？想要的话可以全部给你，去找吧！我把所有财宝都放在那里！</p>
 </blockquote>
 <p>这里是存放个人技术文章的小仓库，也会收录一些其他站点文章作备份(字典)。浏览文章中偶尔会遇到奇怪的东西，不感兴趣的话请略过。<br>想与作者联系的请参考左侧栏选择适合你的联系方式，欢迎大家来找茬！</p>
-<p>近期任务：使用Vue.js完成爬虫站点前后端分离</p>
+<p>近期任务：监控特定直播房间开播状态，并获取弹幕。</p>
 ]]></content>
     
     <summary type="html">
