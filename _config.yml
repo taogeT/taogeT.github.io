@@ -13,7 +13,7 @@ avatar: https://avatars2.githubusercontent.com/u/6917395?v=3&s=230
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.zhengwentao.com
+url: https://blog.zhengwentao.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
