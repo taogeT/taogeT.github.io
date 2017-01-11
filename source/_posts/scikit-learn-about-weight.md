@@ -2,9 +2,9 @@
 title: 尝试使用sklearn自动进行多模型预测并计算权重
 date: 2016-12-01 21:20:09
 tags:
-- machine learning
-- python
-- scikit-learn
+  - machine learning
+  - python
+  - scikit-learn
 categories: 机器学习
 ---
 

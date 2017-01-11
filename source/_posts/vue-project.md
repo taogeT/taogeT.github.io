@@ -1,7 +1,7 @@
 ---
 title: Vue.js前端项目总结
 tags:
-  - vue
+  - Vue
   - search
 categories: 规范
 date: 2017-01-11 17:58:18
@@ -25,7 +25,7 @@ date: 2017-01-11 17:58:18
 
 以下为个人总结的项目结构，详细可查看[github](https://github.com/taogeT/livetv_mining/tree/master/frontend)。
 
-![structure](../images/project-structure.png)
+![structure](/images/project-structure.png)
 
 文件夹src内容解释：
 
