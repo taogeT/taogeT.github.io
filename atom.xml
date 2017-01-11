@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zhengwentao.com/"/>
-  <updated>2017-01-11T09:59:30.985Z</updated>
+  <updated>2017-01-11T10:41:57.585Z</updated>
   <id>https://blog.zhengwentao.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://blog.zhengwentao.com/2017/01/11/vue-project/"/>
     <id>https://blog.zhengwentao.com/2017/01/11/vue-project/</id>
     <published>2017-01-11T09:58:18.000Z</published>
-    <updated>2017-01-11T09:59:30.985Z</updated>
+    <updated>2017-01-11T10:41:57.585Z</updated>
     
     <content type="html"><![CDATA[<h3 id="历程"><a href="#历程" class="headerlink" title="历程"></a>历程</h3><hr>
 <p>近期完成了个人站点 <a href="https://www.zhengwentao.com/" target="_blank" rel="external">直播爬虫</a> 的前后端分离的改造，使用 <a href="https://github.com/vuejs/vue" target="_blank" rel="external">vue</a>+<a href="https://github.com/vuejs/vue-router" target="_blank" rel="external">vue-router</a>+<a href="https://github.com/vuejs/vuex" target="_blank" rel="external">vuex</a> 的方式来构建项目。分离过程中对规划组建前端项目有一点自己的心得体会。</p>
@@ -29,7 +29,7 @@
 <p>采用npm+webpack编译打包项目。webpack配置文件可参考<a href="https://github.com/taogeT/livetv_mining/blob/master/frontend/webpack.config.js" target="_blank" rel="external">例子</a>。</p>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><hr>
 <p>以下为个人总结的项目结构，详细可查看<a href="https://github.com/taogeT/livetv_mining/tree/master/frontend" target="_blank" rel="external">github</a>。</p>
-<p><img src="../images/project-structure.png" alt="structure"></p>
+<p><img src="/images/project-structure.png" alt="structure"></p>
 <p>文件夹src内容解释：</p>
 <ul>
 <li>components 公共组件，通用页面/功能存放。</li>
@@ -66,7 +66,7 @@
     
       <category term="search" scheme="https://blog.zhengwentao.com/tags/search/"/>
     
-      <category term="vue" scheme="https://blog.zhengwentao.com/tags/vue/"/>
+      <category term="Vue" scheme="https://blog.zhengwentao.com/tags/Vue/"/>
     
   </entry>
   
@@ -109,7 +109,7 @@
     <link href="https://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/"/>
     <id>https://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</id>
     <published>2016-12-13T21:38:09.000Z</published>
-    <updated>2016-12-23T12:35:33.241Z</updated>
+    <updated>2017-01-11T10:27:38.531Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在五十万个数字，如何快速找到最大(小)的100个。</p>
 <a id="more"></a>
@@ -142,7 +142,7 @@
     <link href="https://blog.zhengwentao.com/2016/12/09/two-array-compare/"/>
     <id>https://blog.zhengwentao.com/2016/12/09/two-array-compare/</id>
     <published>2016-12-09T15:11:02.000Z</published>
-    <updated>2017-01-11T07:00:20.187Z</updated>
+    <updated>2017-01-11T10:27:03.083Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在两个浮点数数组A、B，如何能快速查找到：</p>
 <ol>
@@ -191,7 +191,7 @@
     <link href="https://blog.zhengwentao.com/2016/12/01/scikit-learn-about-weight/"/>
     <id>https://blog.zhengwentao.com/2016/12/01/scikit-learn-about-weight/</id>
     <published>2016-12-01T13:20:09.000Z</published>
-    <updated>2016-12-20T02:15:36.226Z</updated>
+    <updated>2017-01-11T10:28:11.438Z</updated>
     
     <content type="html"><![CDATA[<h2 id="待解决的问题"><a href="#待解决的问题" class="headerlink" title="待解决的问题"></a>待解决的问题</h2><p>在拥有多个模型的情况下，是否可以通过给多个模型分配权重(weight)，使得加权后的多模型预测结果要好于单模型？</p>
 <a id="more"></a>
@@ -242,7 +242,7 @@
     <link href="https://blog.zhengwentao.com/2016/12/01/unit-test-standard/"/>
     <id>https://blog.zhengwentao.com/2016/12/01/unit-test-standard/</id>
     <published>2016-12-01T08:35:26.000Z</published>
-    <updated>2016-12-01T14:48:25.159Z</updated>
+    <updated>2017-01-11T10:27:54.531Z</updated>
     
     <content type="html"><![CDATA[<p>这是我个人从外部文档和工作项目中总结，当开发单元测试时，根据项目级别不同需要达到级别标准。</p>
 <h3 id="级别分类"><a href="#级别分类" class="headerlink" title="级别分类"></a>级别分类</h3><ul>

@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://blog.zhengwentao.com/2017/01/11/vue-project/</loc>
-    <lastmod>2017-01-11T09:59:30.985Z</lastmod>
+    <lastmod>2017-01-11T10:41:57.585Z</lastmod>
     <data>
         <display>
         <title>Vue.js前端项目总结</title>
@@ -13,7 +13,7 @@
         
         <tag>search</tag>
          
-        <tag>vue</tag>
+        <tag>Vue</tag>
          
          
            
@@ -26,8 +26,74 @@
 
     
   <url>
+    <loc>https://blog.zhengwentao.com/2016/12/01/scikit-learn-about-weight/</loc>
+    <lastmod>2017-01-11T10:28:11.438Z</lastmod>
+    <data>
+        <display>
+        <title>尝试使用sklearn自动进行多模型预测并计算权重</title>
+        <pubTime>2016-12-01T13:20:09.000Z</pubTime>
+        
+        <tag>machine learning</tag>
+         
+        <tag>python</tag>
+         
+        <tag>scikit-learn</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://blog.zhengwentao.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.zhengwentao.com/2016/12/01/unit-test-standard/</loc>
+    <lastmod>2017-01-11T10:27:54.531Z</lastmod>
+    <data>
+        <display>
+        <title>单元测试(Unit Test)覆盖级别</title>
+        <pubTime>2016-12-01T08:35:26.000Z</pubTime>
+        
+        <tag>Unit Test</tag>
+         
+         
+           
+             
+              <breadCrumb title="规范" url="https://blog.zhengwentao.com/categories/%E8%A7%84%E8%8C%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</loc>
+    <lastmod>2017-01-11T10:27:38.531Z</lastmod>
+    <data>
+        <display>
+        <title>海量数据中快速找到最大的100个</title>
+        <pubTime>2016-12-13T21:38:09.000Z</pubTime>
+        
+        <tag>skill</tag>
+         
+        <tag>search</tag>
+         
+         
+           
+             
+              <breadCrumb title="研究心得" url="https://blog.zhengwentao.com/categories/%E7%A0%94%E7%A9%B6%E5%BF%83%E5%BE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.zhengwentao.com/2016/12/09/two-array-compare/</loc>
-    <lastmod>2017-01-11T07:00:20.187Z</lastmod>
+    <lastmod>2017-01-11T10:27:03.083Z</lastmod>
     <data>
         <display>
         <title>快速查找两个数组中相同浮点数</title>
@@ -87,73 +153,7 @@
     </url>
 
     
-  <url>
-    <loc>https://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</loc>
-    <lastmod>2016-12-23T12:35:33.241Z</lastmod>
-    <data>
-        <display>
-        <title>海量数据中快速找到最大的100个</title>
-        <pubTime>2016-12-13T21:38:09.000Z</pubTime>
-        
-        <tag>skill</tag>
-         
-        <tag>search</tag>
-         
-         
-           
-             
-              <breadCrumb title="研究心得" url="https://blog.zhengwentao.com/categories/%E7%A0%94%E7%A9%B6%E5%BF%83%E5%BE%97/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-    
-    
-  <url>
-    <loc>https://blog.zhengwentao.com/2016/12/01/scikit-learn-about-weight/</loc>
-    <lastmod>2016-12-20T02:15:36.226Z</lastmod>
-    <data>
-        <display>
-        <title>尝试使用sklearn自动进行多模型预测并计算权重</title>
-        <pubTime>2016-12-01T13:20:09.000Z</pubTime>
-        
-        <tag>machine learning</tag>
-         
-        <tag>python</tag>
-         
-        <tag>scikit-learn</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="https://blog.zhengwentao.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.zhengwentao.com/2016/12/01/unit-test-standard/</loc>
-    <lastmod>2016-12-01T14:48:25.159Z</lastmod>
-    <data>
-        <display>
-        <title>单元测试(Unit Test)覆盖级别</title>
-        <pubTime>2016-12-01T08:35:26.000Z</pubTime>
-        
-        <tag>Unit Test</tag>
-         
-         
-           
-             
-              <breadCrumb title="规范" url="https://blog.zhengwentao.com/categories/%E8%A7%84%E8%8C%83/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://blog.zhengwentao.com/2016/11/22/about-living-mining/</loc>
