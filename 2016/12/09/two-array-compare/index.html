@@ -118,7 +118,7 @@
 
 浮点数x在数组A、B中都存在。(1:1)
 数组A存在浮点数y，与数组B中浮点数y1、y2….yn相加值相等。同样也在数组B中作相同查找。(1:N or N:1)">
-<meta property="og:updated_time" content="2016-12-22T10:14:22.459Z">
+<meta property="og:updated_time" content="2017-01-11T07:00:20.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速查找两个数组中相同浮点数">
 <meta name="twitter:description" content="问题提出存在两个浮点数数组A、B，如何能快速查找到：
@@ -436,7 +436,7 @@
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思考线索如下：</p>
 <ol>
 <li>是否存在通用方法解决三种查找情况？不存在，由全组合公式可知存在的组合数量：2的N次方-1(N为数组长度)。由于数组长度不可采用此方式。</li>
-<li>按照先后顺序过滤？先查1:1，再查1:N，最后全组合剩余查找M:N。</li>
+<li>按照先后顺序过滤？先查1:1，再查1:N。</li>
 <li>1:1怎么查？循环查找不可取，浮点数先对数组正序排序，再按照数组顺序查找相同元素。</li>
 <li>1:N怎么查？过滤完1:1元素，数组仍然是正序排列。按顺序选取数组A中元素a，查找数组B中所有小于a的浮点数族为数组b，对b进行全组合后相加，得到结果与a比较。对数组B也采取相同方式。</li>
 </ol>
@@ -602,7 +602,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -619,7 +619,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhengwentao.com/2017/01/11/vue-project/</loc>
+    
+    <lastmod>2017-01-11T09:59:30.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.zhengwentao.com/2016/12/09/two-array-compare/</loc>
+    
+    <lastmod>2017-01-11T07:00:20.187Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhengwentao.com/2016/11/22/self-welcome/</loc>
     
     <lastmod>2017-01-09T07:41:03.818Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</loc>
     
     <lastmod>2016-12-23T12:35:33.241Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhengwentao.com/2016/12/09/two-array-compare/</loc>
-    
-    <lastmod>2016-12-22T10:14:22.459Z</lastmod>
     
   </url>
   

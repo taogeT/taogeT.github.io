@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhengwentao.com/"/>
-  <updated>2016-12-24T08:40:43.915Z</updated>
+  <updated>2017-01-11T09:59:30.985Z</updated>
   <id>http://blog.zhengwentao.com/</id>
   
   <author>
@@ -14,6 +14,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue.js前端项目总结</title>
+    <link href="http://blog.zhengwentao.com/2017/01/11/vue-project/"/>
+    <id>http://blog.zhengwentao.com/2017/01/11/vue-project/</id>
+    <published>2017-01-11T09:58:18.000Z</published>
+    <updated>2017-01-11T09:59:30.985Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="历程"><a href="#历程" class="headerlink" title="历程"></a>历程</h3><hr>
+<p>近期完成了个人站点 <a href="https://www.zhengwentao.com/" target="_blank" rel="external">直播爬虫</a> 的前后端分离的改造，使用 <a href="https://github.com/vuejs/vue" target="_blank" rel="external">vue</a>+<a href="https://github.com/vuejs/vue-router" target="_blank" rel="external">vue-router</a>+<a href="https://github.com/vuejs/vuex" target="_blank" rel="external">vuex</a> 的方式来构建项目。分离过程中对规划组建前端项目有一点自己的心得体会。</p>
+<a id="more"></a>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><hr>
+<p>采用npm+webpack编译打包项目。webpack配置文件可参考<a href="https://github.com/taogeT/livetv_mining/blob/master/frontend/webpack.config.js" target="_blank" rel="external">例子</a>。</p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><hr>
+<p>以下为个人总结的项目结构，详细可查看<a href="https://github.com/taogeT/livetv_mining/tree/master/frontend" target="_blank" rel="external">github</a>。</p>
+<p><img src="../images/project-structure.png" alt="structure"></p>
+<p>文件夹src内容解释：</p>
+<ul>
+<li>components 公共组件，通用页面/功能存放。</li>
+<li>filters 公共过滤器，通用过滤方法存放。</li>
+<li>resource RESTFul资源，目前采用<a href="https://github.com/pagekit/vue-resource" target="_blank" rel="external">vue-resource</a>管理资源。</li>
+<li>router 路由创建，由vue-router管理。</li>
+<li>store 全局持久数据存储，由vuex管理。</li>
+<li>views 页面组件，访问页面存放处，资源的调用仅能在此目录下的组件中进行。</li>
+<li>App.vue 根vue模块。</li>
+<li>main.js webpack打包根js脚本。</li>
+</ul>
+<p>这样划分后基本涵盖了前端项目开发中涉及到的内容。</p>
+<h3 id="开发规范-经验-持续更新"><a href="#开发规范-经验-持续更新" class="headerlink" title="开发规范/经验(持续更新)"></a>开发规范/经验(持续更新)</h3><hr>
+<p>一些开发过程中个人遵循的规范和经验，可以比较好提升工作效率。</p>
+<ol>
+<li>公共组件不包含资源调用，数据仅由外部组件传入。</li>
+<li>在两个以上页面组件中出现重复html代码，该html代码必须拆分为公共组件。</li>
+<li>页面组件不得使用ajax获取数据，只能使用resource获取。</li>
+<li>页面组件获取数据只能与store交互，再通过store传递到其他页面组件。</li>
+<li>访问权限控制，通过路由 meta: { auth: … } 管理。</li>
+<li>用户登录的场景，当用户登录后，store保存用户信息，router在每次切换时要验证session是否有效。若无效，删除store中用户信息。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;历程&quot;&gt;&lt;a href=&quot;#历程&quot; class=&quot;headerlink&quot; title=&quot;历程&quot;&gt;&lt;/a&gt;历程&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;近期完成了个人站点 &lt;a href=&quot;https://www.zhengwentao.com/&quot;&gt;直播爬虫&lt;/a&gt; 的前后端分离的改造，使用 &lt;a href=&quot;https://github.com/vuejs/vue&quot;&gt;vue&lt;/a&gt;+&lt;a href=&quot;https://github.com/vuejs/vue-router&quot;&gt;vue-router&lt;/a&gt;+&lt;a href=&quot;https://github.com/vuejs/vuex&quot;&gt;vuex&lt;/a&gt; 的方式来构建项目。分离过程中对规划组建前端项目有一点自己的心得体会。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="规范" scheme="http://blog.zhengwentao.com/categories/%E8%A7%84%E8%8C%83/"/>
+    
+    
+      <category term="search" scheme="http://blog.zhengwentao.com/tags/search/"/>
+    
+      <category term="vue" scheme="http://blog.zhengwentao.com/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>随机拆分一个正数为任意份</title>
@@ -87,7 +142,7 @@
     <link href="http://blog.zhengwentao.com/2016/12/09/two-array-compare/"/>
     <id>http://blog.zhengwentao.com/2016/12/09/two-array-compare/</id>
     <published>2016-12-09T15:11:02.000Z</published>
-    <updated>2016-12-22T10:14:22.459Z</updated>
+    <updated>2017-01-11T07:00:20.187Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>存在两个浮点数数组A、B，如何能快速查找到：</p>
 <ol>
@@ -105,7 +160,7 @@
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思考线索如下：</p>
 <ol>
 <li>是否存在通用方法解决三种查找情况？不存在，由全组合公式可知存在的组合数量：2的N次方-1(N为数组长度)。由于数组长度不可采用此方式。</li>
-<li>按照先后顺序过滤？先查1:1，再查1:N，最后全组合剩余查找M:N。</li>
+<li>按照先后顺序过滤？先查1:1，再查1:N。</li>
 <li>1:1怎么查？循环查找不可取，浮点数先对数组正序排序，再按照数组顺序查找相同元素。</li>
 <li>1:N怎么查？过滤完1:1元素，数组仍然是正序排列。按顺序选取数组A中元素a，查找数组B中所有小于a的浮点数族为数组b，对b进行全组合后相加，得到结果与a比较。对数组B也采取相同方式。</li>
 </ol>
