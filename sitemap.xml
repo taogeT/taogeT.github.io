@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.zhengwentao.com/about/index.html</loc>
+    
+    <lastmod>2017-01-21T14:36:36.385Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.zhengwentao.com/2017/01/21/webpack-config/</loc>
+    
+    <lastmod>2017-01-21T14:35:23.041Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.zhengwentao.com/tags/index.html</loc>
+    
+    <lastmod>2017-01-12T02:09:31.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.zhengwentao.com/categories/index.html</loc>
+    
+    <lastmod>2017-01-12T02:09:09.565Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.zhengwentao.com/2017/01/11/vue-project/</loc>
     
     <lastmod>2017-01-11T10:41:57.585Z</lastmod>
@@ -72,30 +100,9 @@
   </url>
   
   <url>
-    <loc>https://blog.zhengwentao.com/about/index.html</loc>
-    
-    <lastmod>2016-11-22T09:44:20.606Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.zhengwentao.com/404.html</loc>
     
     <lastmod>2016-11-22T07:35:43.777Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.zhengwentao.com/categories/index.html</loc>
-    
-    <lastmod>2016-11-22T06:51:10.553Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.zhengwentao.com/tags/index.html</loc>
-    
-    <lastmod>2016-11-22T06:47:30.223Z</lastmod>
     
   </url>
   

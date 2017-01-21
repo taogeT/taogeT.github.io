@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[webpack配置使用]]></title>
+      <url>%2F2017%2F01%2F21%2Fwebpack-config%2F</url>
+      <content type="text"><![CDATA[webpack打包单页前端项目 在项目 直播爬虫 的前端开发过程中，使用了webpack集成打包，实现了单页面前端的效果。特写此文总结webpack使用经验与配置。 webpack特点 webpack对于各种主流模块的安装依赖、不同规范语法(amd/cmd/commonjs)，以及不同的模块加载器和插件等都有很好的支持，开发人员可以通过配置轻松打包一个项目，减少学习成本。或者换句话说，对于我这样前端开发接触不多的开发者，webpack提供了一整套方便处理的编译打包测试方案。 一切资源都可以模块化的工作方式，也很符合后端开发者一贯思维方式。同时还提供了丰富的插件供选择，基本上可以满足前端开发需求。 上面提到的都是webpack优势，现在来说说它的不足。首先webpack项目事件不是很长，目前1.x稳定版2.x开发版，我稍微看了下内容担心会像angular一样会有跨度大，迁移学习成本高的问题。第二点webpack本身配置和使用文档内容很繁琐，且质量不高，更别提其他的第三方插件了，我使用下来感觉不是很顺畅，初期学习成本比较陡峭。 与其他几种主流打包比较，建议看下这篇文章 Module loader comparison。 反正我自己是在用了webpack后把gulp全删了，懒！ 配置介绍(持续更新) 以直播项目配置为例，介绍如何配置webpack。官网 目前分为三个文件：base(基础)，dev(开发)，prod(生产)。 dev与prod的区别主要是在plugins上： dev中包含了热启动和webpack-dev-server启动的信息。 webpack.optimize.OccurrenceOrderPlugin() webpack.HotModuleReplacementPlugin() webpack.NoErrorsPlugin() prod包含了混淆css、js文件，以及html文件压缩处理。 webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Vue.js前端项目总结]]></title>
       <url>%2F2017%2F01%2F11%2Fvue-project%2F</url>
       <content type="text"><![CDATA[历程 近期完成了个人站点 直播爬虫 的前后端分离的改造，使用 vue+vue-router+vuex 的方式来构建项目。分离过程中对规划组建前端项目有一点自己的心得体会。 工具 采用npm+webpack编译打包项目。webpack配置文件可参考例子。 项目结构 以下为个人总结的项目结构，详细可查看github。 文件夹src内容解释： components 公共组件，通用页面/功能存放。 filters 公共过滤器，通用过滤方法存放。 resource RESTFul资源，目前采用vue-resource管理资源。 router 路由创建，由vue-router管理。 store 全局持久数据存储，由vuex管理。 views 页面组件，访问页面存放处，资源的调用仅能在此目录下的组件中进行。 App.vue 根vue模块。 main.js webpack打包根js脚本。 这样划分后基本涵盖了前端项目开发中涉及到的内容。 开发规范/经验(持续更新) 一些开发过程中个人遵循的规范和经验，可以比较好提升工作效率。 公共组件不包含资源调用，数据仅由外部组件传入。 在两个以上页面组件中出现重复html代码，该html代码必须拆分为公共组件。 页面组件不得使用ajax获取数据，只能使用resource获取。 页面组件获取数据只能与store交互，再通过store传递到其他页面组件。 访问权限控制，通过路由 meta: { auth: … } 管理。 用户登录的场景，当用户登录后，store保存用户信息，router在每次切换时要验证session是否有效。若无效，删除store中用户信息。]]></content>

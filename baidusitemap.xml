@@ -3,6 +3,31 @@
 
 
     
+    
+  <url>
+    <loc>https://blog.zhengwentao.com/2017/01/21/webpack-config/</loc>
+    <lastmod>2017-01-21T14:35:23.041Z</lastmod>
+    <data>
+        <display>
+        <title>webpack配置使用</title>
+        <pubTime>2017-01-21T14:35:23.000Z</pubTime>
+        
+        <tag>skill</tag>
+         
+        <tag>search</tag>
+         
+         
+           
+             
+              <breadCrumb title="研究心得" url="https://blog.zhengwentao.com/categories/%E7%A0%94%E7%A9%B6%E5%BF%83%E5%BE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
   <url>
     <loc>https://blog.zhengwentao.com/2017/01/11/vue-project/</loc>
     <lastmod>2017-01-11T10:41:57.585Z</lastmod>
@@ -180,8 +205,5 @@
     </data>
     </url>
 
-    
-    
-    
     
 </urlset>
