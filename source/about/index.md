@@ -1,6 +1,7 @@
 ---
 title: 关于作者
 date: 2016-11-22 15:32:53
+comments: false
 ---
 
 **人生苦短，我用Python**
