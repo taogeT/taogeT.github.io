@@ -3,6 +3,30 @@
 
 
     
+  <url>
+    <loc>https://blog.zhengwentao.com/2017/02/19/livetv-mining-summary-spider/</loc>
+    <lastmod>2017-02-18T16:44:17.139Z</lastmod>
+    <data>
+        <display>
+        <title>直播项目阶段性总结-爬虫</title>
+        <pubTime>2017-02-18T16:44:17.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Celery</tag>
+         
+        <tag>Scrapy</tag>
+         
+         
+           
+             
+              <breadCrumb title="项目" url="https://blog.zhengwentao.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://blog.zhengwentao.com/2017/01/21/webpack-config/</loc>
@@ -192,9 +216,9 @@
          
         <tag>Scrapy</tag>
          
-        <tag>Flask</tag>
-         
         <tag>Vue</tag>
+         
+        <tag>Flask</tag>
          
          
            
