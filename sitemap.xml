@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.zhengwentao.com/2016/12/09/two-array-compare/</loc>
+    
+    <lastmod>2017-04-12T11:35:45.511Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.zhengwentao.com/2017/02/19/livetv-mining-summary-spider/</loc>
     
     <lastmod>2017-02-18T17:13:19.497Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>https://blog.zhengwentao.com/2016/12/14/100-hundreds-million-number/</loc>
     
     <lastmod>2017-01-11T10:27:38.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.zhengwentao.com/2016/12/09/two-array-compare/</loc>
-    
-    <lastmod>2017-01-11T10:27:03.083Z</lastmod>
     
   </url>
   
