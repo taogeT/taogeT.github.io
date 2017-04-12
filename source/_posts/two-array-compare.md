@@ -41,24 +41,13 @@ categories: 研究心得
     # -*- coding: utf-8 -*-
     from collections import deque
     
-    import math
-    
-    
-    def create_mix_group_result(group):
-        result = {}
-        for index in range(int(math.pow(2, len(group) - 1) + 1), int(math.pow(2, len(group)))):
-            binstr = bin(index)[2:]
-            mix_group = [group[binindex] for binindex, binvalue in enumerate(binstr) if binvalue == '1']
-            result[binstr] = sum(mix_group)
-        return result
+    import itertools
     
     
     def find_one_to_one(portalA, portalB):
         if len(portalA) <= 0 or len(portalB) <= 0:
             return None, portalA, portalB
-    
         OneToOne, A_filter, B_filter = [], [], []
-    
         A = deque(sorted(portalA))
         B = deque(sorted(portalB))
         while len(A) > 0 and len(B) > 0:
@@ -77,65 +66,132 @@ categories: 研究心得
                 A_filter.extend(A)
             if len(B) > 0:
                 B_filter.extend(B)
-    
         return OneToOne, A_filter, B_filter
+    
+    
+    def match_selected_number(comb_index_list, one_object, many_array):
+        if len(comb_index_list) > 0:
+            comb_max_size = len(comb_index_list)
+            while sum(comb_index_list[:comb_max_size]) > one_object:
+                comb_max_size -= 1
+            else:
+                if comb_max_size < 2:
+                    return False, None
+            for comb_size in range(2, comb_max_size + 1):
+                for comb_tuple in itertools.combinations(comb_index_list, comb_size):
+                    if abs(one_object - sum([many_array[comb_index] for comb_index in comb_tuple])) <= 1:
+                        many_comb = []
+                        many_last_split_index = 0
+                        many_split = []
+                        for temp_index in comb_tuple:
+                            many_comb.append(many_array[temp_index])
+                            many_split += many_array[many_last_split_index:temp_index]
+                            many_last_split_index = temp_index + 1
+                        else:
+                            many_split += many_array[many_last_split_index:]
+                        return True, (many_comb, many_split)
+        return False, None
     
     
     def find_one_to_many(portalA, portalB):
         if len(portalA) <= 0 or len(portalB) <= 0:
             return None, portalA, portalB
+        
+        OneToMany = []
+        A = sorted(portalA)
+        B = sorted(portalB)
+        
+        comb_index_list = []
+        tag = 'A'
+        A_index, B_index = 0, 0
     
-        OneToMany, A_filter, B_filter = [], [], []
-    
-        A = deque(portalA)
-        B_mix_group = create_mix_group_result(portalB)
-        while len(A) > 0:
-            A_ele = A.popleft()
-            for B_mix_key, B_mix_value in B_mix_group.items():
-                if A_ele == B_mix_value:
-                    newportalB = []
-                    getB = []
-                    for delindex, delstr in enumerate(B_mix_key):
-                        if delstr == '1':
-                            getB.append(portalB[delindex])
-                        else:
-                            newportalB.append(portalB[delindex])
-                    OneToMany.append((A_ele, getB))
-                    portalB = newportalB
-                    B_mix_group = create_mix_group_result(portalB)
-                    break
-            else:
-                A_filter.append(A_ele)
-    
-        B = deque(portalB)
-        A_mix_group = create_mix_group_result(A_filter)
-        while len(B) > 0:
-            B_ele = B.popleft()
-            for A_mix_key, A_mix_value in A_mix_group.items():
-                if B_ele == A_mix_value:
-                    newA_filter = []
-                    getA = []
-                    for delindex, delstr in enumerate(A_mix_key):
-                        if delstr == '1':
-                            getA.append(A_filter[delindex])
-                        else:
-                            newA_filter.append(A_filter[delindex])
-                    OneToMany.append((getA, B_ele))
-                    A_filter = newA_filter
-                    A_mix_group = create_mix_group_result(A_filter)
-                    break
-            else:
-                B_filter.append(B_ele)
-    
-        return OneToMany, A_filter, B_filter
+        while A_index < len(A) and B_index < len(B):
+            if A[A_index] < B[B_index]:
+                if tag == 'A':
+                    comb_index_list.append(A_index)
+                    A_index += 1
+                else:
+                    tag = 'A'
+                    res_bool, res_tuple = match_selected_number(comb_index_list, A[A_index], B)
+                    if res_bool:
+                        OneToMany.append((A[A_index], res_tuple[0]))
+                        A.remove(A[A_index])
+                        B = res_tuple[1]
+                        comb_index_list = []
+                        A_index, B_index = 0, 0
+                    else:
+                        comb_index_list = list(range(0, A_index + 1))
+            elif A[A_index] > B[B_index]:
+                if tag == 'B':
+                    comb_index_list.append(B_index)
+                    B_index += 1
+                else:
+                    tag = 'B'
+                    res_bool, res_tuple = match_selected_number(comb_index_list, B[B_index], A)
+                    if res_bool:
+                        OneToMany.append((B[B_index], res_tuple[0]))
+                        B.remove(B[B_index])
+                        A = res_tuple[1]
+                        comb_index_list = []
+                        A_index, B_index = 0, 0
+                    else:
+                        comb_index_list = list(range(0, B_index + 1))
+        return OneToMany, A, B
     
     
     if __name__ == '__main__':
-        A = [9, 1, 4, 6, 3, 10, 9, 3, 5, 2, 4, 10, 13]
-        B = [3, 10, 2, 9, 6, 6, 1, 1, 4, 8, 3, 5, 8, 12, 2, 2]
+        A = [1662.52, 4995.05, 45.3, 1879.08, 5044.86, 1219.7, 687.54, 663.26, 3606.51, 1548.91, 3150.2, 1784.29, 6869.56,
+             1730.5, 3534.81, 4366.99, 332.12, 2950.2, 2070.39, 593.34, 3326.01, 640.93, 950.71, 3719.31, 6108.77, 1511.03,
+             1883.93, 872.05, 2694.8, 8904.43, 5724.2, 8622.4, 704.05, 2925, 9658.56, 284.53, 2640.42, 5397.37, 9039,
+             6580.17, 6577.26, 7382.3, 2781.23, 1108.03, 2498.64, 1254.66, 578.78, 423.4, 2058.73, 3540.63, 3324.07, 863.31,
+             205.87, 9959.6, 3049.25, 7570.38, 2817.15, 9615.83, 194.22, 450.59, 3076.44, 382.61, 170.91, 2712.06, 423.4,
+             1298.97, 365.13, 2771.03, 275.58, 3629.97, 354.45, 4569.76, 2470.47, 1384.79, 1181.83, 1386.73, 4305.86,
+             2998.76, 705.99, 2489.07, 2695.68, 4106.78, 2105.34, 9303.26, 5803.96, 469.04, 534.11, 22097.8, 1765.21,
+             8329.12, 8417.12, 6360.71, 5901.37, 10156.8, 2646.25, 1076.95, 5429.69, 5758.62, 13216.3, 2276.26, 970.13,
+             1833.44, 6809.35, 2614.2, 1786.82, 509.65, 2862.81, 1580.95, 7461.93, 2653.56, 758.43, 6351.97, 2811.34,
+             2204.4, 5232.29, 9084.65, 6577.26, 6811.75, 477.78, 891.63, 493.32, 1165.32, 354.45, 1823.73, 1254.66, 5979.16,
+             3673, 377.76, 2705.48, 552.56, 463.32, 1786.82, 578.78, 1300.26, 3125, 292.5, 1130.36, 816.7]
+        
+        B = [32554.1, 16586.4, 14145, 13820.3, 13721.8, 12309.2, 12080.5, 11982, 11361.9, 10438.3, 10318.2, 10202.4,
+             10156.8, 9959.6, 9658.56, 9421.61, 9237.1, 8904.43, 8299.02, 7664.67, 7461.93, 7173.52, 6899.67, 6721.95,
+             6580.17, 6464.25, 6360.71, 6355.85, 6035.39, 5911.09, 5696.73, 5477.98, 5397.37, 5276.96, 5239.86, 5234.23,
+             5125.47, 5114.08, 5066.23, 5044.86, 4945.81, 4864.86, 4759.36, 4710.81, 4622.44, 4569.76, 4477.74, 4326.66,
+             4323.34, 4316.13, 4256.75, 4164.17, 4139.55, 4093.19, 4078.62, 3883.43, 3856.24, 3828.08, 3807.68, 3805.74,
+             3797, 3767.87, 3767.87, 3719.31, 3665.9, 3626.09, 3618.32, 3609.58, 3601.81, 3370.69, 3315.34, 3138.6, 3125,
+             3093.92, 3076.44, 3049.25, 3021.09, 3016.24, 3013.92, 2991.96, 2985.16, 2925, 2905.53, 2856.01, 2841.44,
+             2798.71, 2796.3, 2771.03, 2734.62, 2712.06, 2705.48, 2668.58, 2653.56, 2653.05, 2627.8, 2617.29, 2598.57,
+             2587.01, 2570.5, 2529.54, 2528.74, 2507.38, 2498.64, 2498.64, 2431.63, 2386.96, 2385.31, 2367.54, 2348.12,
+             2346.83, 2323.84, 2320.93, 2289.85, 2284.03, 2276.26, 2265.28, 2254.89, 2253.92, 2242.27, 2218.32, 2217.02,
+             2216.05, 2191.77, 2148.07, 2118.89, 2113.11, 2105.34, 2102.43, 2097.58, 2086.89, 2073.3, 2070.39, 2058.73,
+             1998.52, 1938.36, 1932.49, 1924.72, 1924.72, 1913.07, 1907.24, 1904.33, 1901.41, 1901.41, 1890.73, 1889.55,
+             1879.08, 1875.19, 1859.66, 1848.97, 1833.44, 1823.73, 1814.99, 1814.67, 1807.22, 1797.51, 1786.82, 1786.82,
+             1782.94, 1767.4, 1747.98, 1744.1, 1730.5, 1716.9, 1713.99, 1682.92, 1672.23, 1664.42, 1662.52, 1648.53,
+             1637.27, 1580.95, 1579.98, 1579.01, 1575.12, 1567.36, 1550.25, 1511.03, 1478.01, 1447.29, 1432.37, 1403.24,
+             1397.41, 1386.73, 1374.11, 1374.11, 1368.28, 1357.6, 1337.2, 1316.81, 1310.01, 1298.97, 1291.56, 1287.68,
+             1279.91, 1277.97, 1276.03, 1254.66, 1254.66, 1251.75, 1219.7, 1216.79, 1206.11, 1202.22, 1196.4, 1193.48,
+             1181.83, 1180.86, 1176.97, 1170.18, 1165.32, 1156.58, 1138.13, 1130.36, 1130.36, 1112.88, 1108.03, 1093.46,
+             1087.63, 1085.69, 1085.69, 1084.59, 1060.02, 1059.47, 1059.47, 1047.82, 1046.85, 1046.33, 1044.81, 1040.05,
+             1036.16, 1033.25, 1031.31, 1031.31, 1003.15, 994.41, 984.7, 970.13, 962.36, 961.39, 950.71, 950.71, 934.83,
+             931.28, 916.72, 893.41, 891.63, 891.63, 889.84, 881.01, 879.82, 877.87, 872.05, 867.19, 863.31, 860.35, 844.16,
+             830.29, 821.55, 821.55, 816.7, 815.72, 811.84, 799.03, 796.3, 796.3, 792.42, 791.45, 791.45, 786.24, 781.74,
+             778.82, 769.11, 755.82, 755.82, 753.57, 734.15, 729.3, 704.05, 703.22, 703.22, 703.08, 701.13, 696.28, 689.13,
+             689.01, 687.54, 680.74, 677.83, 671.03, 663.26, 659.88, 658.41, 657.43, 648.69, 645.78, 640.93, 635.1, 623.45,
+             615.68, 605.55, 604.14, 596.26, 594.95, 593.34, 593.05, 593.05, 592.37, 578.78, 578.78, 570.04, 570.04, 568.09,
+             564.21, 561.49, 560.32, 553.53, 552.56, 551.58, 551.07, 546.73, 541.71, 538.96, 534.11, 534.11, 531.02, 529.25,
+             529.25, 527.31, 527.31, 521.48, 519.54, 516.63, 510.12, 509.65, 504.97, 504, 502.06, 498.17, 498.17, 497.2,
+             497.2, 494.29, 493.32, 487.49, 483.91, 483.54, 481.67, 471.95, 469.76, 469.04, 464.19, 463.32, 461.27, 450.59,
+             448.65, 445.73, 440.88, 439.91, 437, 429.23, 423.4, 423.4, 421.46, 419.52, 418.54, 415.63, 414.66, 414.66,
+             412.72, 405.92, 398.15, 397.18, 395.24, 392.32, 388.44, 387.47, 387.47, 383.58, 383.58, 383.58, 383.58, 382.61,
+             381.64, 380.67, 377.76, 377.76, 365.13, 365.13, 365.13, 364.16, 363.19, 363.19, 362.22, 362.22, 360.28, 354.45,
+             354.45, 343.77, 343.77, 341.83, 341.83, 340.47, 337.94, 332.12, 332.12, 332.12, 331.15, 326.29, 325.32, 321.75,
+             315.61, 312.69, 308.81, 307.84, 307.84, 307.84, 305.9, 301.3, 299.61, 299.52, 286.47, 285.5, 284.53, 282.59,
+             274.82, 272.88, 270.94, 256.37, 255.4, 249.57, 248.6, 232.09, 231.12, 222.38, 220.44, 220.44, 220.44, 213.64,
+             205.87, 203.93, 194.22, 194.22, 193.25, 191.31, 183.54, 170.91, 168.85, 165.09, 143.72, 118.64, 97.11, 94.2,
+             70.01, 50.5, 49.42, 45.3, 44.46, 32.76]
     
+        print(len(A), len(B))
         OneToOne, A_filter, B_filter = find_one_to_one(A, B)
-        print(OneToOne, A_filter, B_filter)
+        print(OneToOne, len(A_filter), len(B_filter))
         OneToMany, A_filter, B_filter = find_one_to_many(A_filter, B_filter)
-        print(OneToMany, A_filter, B_filter)
-    ```
+        print(OneToMany, len(A_filter), len(B_filter))
+        ```
